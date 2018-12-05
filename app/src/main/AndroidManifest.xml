@@ -12,7 +12,7 @@
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashsActivity"
             android:label="SplashsActivity"
@@ -23,7 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EditRestaurantActivity"></activity>
+        <activity android:name=".EditRestaurantActivity" />
+        <activity android:name=".AboutUsActivity"></activity>
     </application>
 
 </manifest>

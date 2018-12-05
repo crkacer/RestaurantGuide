@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAccent"
     tools:context=".EditRestaurantActivity">
 
     <TextView
@@ -17,20 +18,25 @@
 
     <TextView
         android:id="@+id/Rest_Name"
-        android:textSize="19sp"
         android:layout_width="79dp"
         android:layout_height="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/edit_RestaurantName"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="76dp" />
+        android:textSize="19sp"
+        app:layout_constraintEnd_toStartOf="@+id/fieldRest_Name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <EditText
         android:id="@+id/fieldRest_Name"
-        android:layout_width="204dp"
+        android:layout_width="211dp"
         android:layout_height="39dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="@string/hint_Rest_Name"
         android:inputType="text"
@@ -39,86 +45,194 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Rest_Address"
+        android:id="@+id/Rest_Street"
         android:layout_width="83dp"
         android:layout_height="32dp"
-        android:text="@string/edit_RestaurantAddress"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/edit_RestaurantStreet"
         android:textSize="19sp"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="129dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Rest_Name" />
+
+    <EditText
+        android:id="@+id/fieldRest_Street"
+        android:layout_width="211dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/hint_Rest_Street"
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
-        android:id="@+id/Rest_Address2"
+        android:id="@+id/Rest_Apt"
+        android:layout_width="117dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/edit_RestaurantApartment"
         android:textSize="19sp"
-        android:layout_width="148dp"
-        android:layout_height="30dp"
-        android:text="@string/edit_RestaurantAddress2"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="184dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Rest_Street" />
+
+    <EditText
+        android:id="@+id/fieldRest_Apartment"
+        android:layout_width="210dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="184dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/hint_Rest_Apartment"
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Rest_City"
-        android:textSize="19sp"
         android:layout_width="50dp"
         android:layout_height="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
         android:text="@string/edit_RestaurantCity"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="230dp" />
+        android:textSize="19sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Rest_Apt" />
+
+    <EditText
+        android:id="@+id/fieldRest_City"
+        android:layout_width="102dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="252dp"
+        android:layout_marginEnd="192dp"
+        android:ems="10"
+        android:hint="@string/hint_Rest_City"
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Rest_State"
-        android:textSize="19sp"
         android:layout_width="50dp"
         android:layout_height="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
         android:text="@string/edit_RestaurantState"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="283dp" />
+        android:textSize="19sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Rest_City" />
+
+    <EditText
+        android:id="@+id/fieldRest_State"
+        android:layout_width="79dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="304dp"
+        android:layout_marginEnd="216dp"
+        android:ems="10"
+        android:hint="@string/hint_Rest_State"
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Rest_Zip"
-        android:textSize="19sp"
-        android:layout_width="50dp"
+        android:layout_width="41dp"
         android:layout_height="32dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="112dp"
         android:text="@string/edit_RestaurantZip"
-        tools:layout_editor_absoluteX="212dp"
-        tools:layout_editor_absoluteY="230dp" />
+        android:textSize="19sp"
+        app:layout_constraintEnd_toEndOf="@+id/fieldRest_Zip"
+        app:layout_constraintTop_toBottomOf="@+id/fieldRest_Apartment" />
+
+    <EditText
+        android:id="@+id/fieldRest_Zip"
+        android:layout_width="102dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="252dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/hint_Rest_Zip"
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Rest_Country"
         android:layout_width="77dp"
         android:layout_height="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="128dp"
         android:text="@string/edit_RestaurantCountry"
         android:textSize="19sp"
-        tools:layout_editor_absoluteX="212dp"
-        tools:layout_editor_absoluteY="283dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Rest_Zip" />
+
+    <EditText
+        android:id="@+id/fieldRest_Country"
+        android:layout_width="102dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="304dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/hint_Rest_Country"
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Rest_Description"
-        android:layout_width="116dp"
+        android:layout_width="105dp"
         android:layout_height="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
         android:text="@string/edit_RestaurantDescription"
         android:textSize="19sp"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="344dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Rest_State" />
+
+    <EditText
+        android:id="@+id/fieldRest_Description"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/hint_Rest_Description"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fieldRest_Country" />
 
 
     <TextView
         android:id="@+id/Rest_Tags"
-        android:textSize="19sp"
         android:layout_width="92dp"
         android:layout_height="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="48dp"
         android:text="@string/edit_RestaurantTags"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="409dp" />
+        android:textSize="19sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Rest_Description" />
 
     <Spinner
         android:id="@+id/Rest_Tags_spinner"
-        android:layout_width="143dp"
-        android:layout_height="43dp"
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="409dp" />
-
-
+        android:spinnerMode="dropdown"
+        android:layout_width="132dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fieldRest_Description" />
 
 
 </android.support.constraint.ConstraintLayout>

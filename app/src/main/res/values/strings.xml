@@ -12,8 +12,8 @@
     <!-- Edit Customer Activity -->
     <string name="TitlePage_EditRestaurant">Edit Restaurant:</string>
     <string name="edit_RestaurantName">Name:</string>
-    <string name="edit_RestaurantAddress">Street:</string>
-    <string name="edit_RestaurantAddress2">Apartment/Suite/Unit:</string>
+    <string name="edit_RestaurantStreet">Street:</string>
+    <string name="edit_RestaurantApartment">Apartment/Suite/Unit:</string>
     <string name="edit_RestaurantCity">City:</string>
     <string name="edit_RestaurantState">State:</string>
     <string name="edit_RestaurantZip">Zip:</string>
@@ -21,9 +21,37 @@
     <string name="edit_RestaurantDescription">Description:</string>
     <string name="edit_RestaurantTags">Tags:</string>
     <string name="edit_input_RestaurantName">Tags:</string>
-    <string name="hint_Rest_Name">Enter Name</string>
+    <string name="hint_Rest_Name">Name</string>
+    <string name="hint_Rest_Street">Street</string>
+    <string name="hint_Rest_Apartment">Apartment</string>
+    <string name="hint_Rest_City">City</string>
+    <string name="hint_Rest_Zip">Zip</string>
+    <string name="hint_Rest_Country">Country</string>
+    <string name="hint_Rest_State">State</string>
+    <string name="hint_Rest_Description">Enter Description</string>
 
 
+    <string name="RestaurantGuide">Rest_Tags_spinner</string>
+    <string-array name="Items">
+        <item>#VEGAN</item>
+        <item>#FASTFOOD</item>
+        <item>#ITALIAN</item>
+        <item>#MEXICAN</item>
+        <item>#CHINESE</item>
+        <item>#INDIAN</item>
+        <item>#VIETNAMESE</item>
+        <item>#KOREAN</item>
+        <item>#JAPANESE</item>
+        <item>#THAI</item>
+        <item>#ARGENTINIAN</item>
+        <item>#VIETNAMESE</item>
+        <item>#DINNER</item>
+        <item>#BRUNCH</item>
+        <item>#BREAKFAST</item>
+    </string-array>
 
+    <!-- About Us Activity -->
+    <string name="TitlePage_AboutUs">About Us</string>
+    TitlePage_AboutUs
 
 </resources>
