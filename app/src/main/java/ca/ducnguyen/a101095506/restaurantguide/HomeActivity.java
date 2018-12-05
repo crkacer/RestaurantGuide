@@ -3,6 +3,7 @@ package ca.ducnguyen.a101095506.restaurantguide;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+
+import ca.ducnguyen.a101095506.restaurantguide.helpers.RightDrawableOnTouchListener;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -44,9 +47,20 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        EditText editText = (EditText) findViewById(R.id.search);
+        final EditText editText = (EditText) findViewById(R.id.search);
+        editText.setOnTouchListener(new RightDrawableOnTouchListener(editText) {
+            @Override
+            public boolean onDrawableTouch(final MotionEvent event) {
+                return onClickSearch(editText,event);
+            }
+        });
 
+    }
 
+    private boolean onClickSearch(final View view, MotionEvent event) {
+        // do something
+        event.setAction(MotionEvent.ACTION_CANCEL);
+        return false;
     }
 
     @Override
