@@ -1,4 +1,4 @@
-package com.example.a101094202.myapplication_conference_1;
+package ca.ducnguyen.a101095506.restaurantguide.helpers;
 
 import android.content.Intent;
 import android.database.Cursor;

@@ -1,5 +1,4 @@
-package com.example.a101094202.myapplication_conference_1;
-
+package ca.ducnguyen.a101095506.restaurantguide.helpers;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;

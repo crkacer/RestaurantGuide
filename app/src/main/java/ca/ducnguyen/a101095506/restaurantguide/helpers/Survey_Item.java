@@ -1,5 +1,4 @@
-package com.example.a101094202.myapplication_conference_1;
-
+package ca.ducnguyen.a101095506.restaurantguide.helpers;
 public class Survey_Item {
 
     private String question, answer;
