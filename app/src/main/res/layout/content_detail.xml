@@ -18,28 +18,34 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/txtName"
                 android:layout_width="match_parent"
                 android:layout_height="53dp"
-                android:text="TextView" />
+                android:text="Name" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/txtAddress"
                 android:layout_width="match_parent"
                 android:layout_height="53dp"
-                android:text="TextView" />
+                android:text="Address" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/txtPhone"
                 android:layout_width="match_parent"
                 android:layout_height="53dp"
-                android:text="TextView" />
+                android:text="Phone" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/txtDescription"
                 android:layout_width="match_parent"
                 android:layout_height="53dp"
-                android:text="TextView" />
+                android:text="Description" />
+
+            <TextView
+                android:id="@+id/txtTags"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:text="Tags" />
 
             <com.google.android.gms.maps.MapView
                 android:id="@+id/mapView"
@@ -55,7 +61,7 @@
                 android:id="@+id/btnRating"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="@string/btnRating" />
         </LinearLayout>
     </ScrollView>
 
