@@ -10,7 +10,8 @@
     <string name="nav_header_desc">Navigation header</string>
 
     <!-- Edit Customer Activity -->
-    <string name="TitlePage_EditRestaurant">Edit Restaurant:</string>
+    <string name="TitlePage_RegisterRestaurant">Register Restaurant</string>
+    <string name="TitlePage_EditRestaurant">Edit Restaurant</string>
     <string name="edit_RestaurantName">Name:</string>
     <string name="edit_RestaurantStreet">Street:</string>
     <string name="edit_RestaurantApartment">Apartment/Suite/Unit:</string>
@@ -21,15 +22,16 @@
     <string name="edit_RestaurantDescription">Description:</string>
     <string name="edit_RestaurantTags">Tags:</string>
     <string name="edit_input_RestaurantName">Tags:</string>
-    <string name="hint_Rest_Name">Name</string>
-    <string name="hint_Rest_Street">Street</string>
-    <string name="hint_Rest_Apartment">Apartment</string>
-    <string name="hint_Rest_City">City</string>
-    <string name="hint_Rest_Zip">Zip</string>
-    <string name="hint_Rest_Country">Country</string>
-    <string name="hint_Rest_State">State</string>
+    <string name="hint_Rest_Name">Enter Name</string>
+    <string name="hint_Rest_Street">Enter Street</string>
+    <string name="hint_Rest_Apartment">Enter Apartment</string>
+    <string name="hint_Rest_City">Enter City</string>
+    <string name="hint_Rest_Zip">Enter Zip</string>
+    <string name="hint_Rest_Country">Enter Country</string>
+    <string name="hint_Rest_State">Enter State</string>
     <string name="hint_Rest_Description">Enter Description</string>
-
+    <string name="btn_edit">Edit</string>
+    <string name="btn_register">Register</string>
 
     <string name="RestaurantGuide">Rest_Tags_spinner</string>
     <string-array name="Items">
@@ -52,6 +54,14 @@
 
     <!-- About Us Activity -->
     <string name="TitlePage_AboutUs">About Us</string>
-    TitlePage_AboutUs
+    <string name="huy">Huy Dam</string>
+    <string name="duc">Duc Nguyen</string>
+    <string name="al">Allan Martinez</string>
+    <string name="member_description">A highly skilled developer mastering MEAN Stack including Angular and React</string>
+    <string name="member_description2">A highly skilled developer mastering Cloud Services including AWS</string>
+    <string name="member_description3">A highly skilled quality analyst mastering SDLC Testing including Automation</string>
+
+    <!-- Register Restaurant Activity -->
+
 
 </resources>

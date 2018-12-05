@@ -24,7 +24,7 @@ public class EditRestaurantActivity extends AppCompatActivity implements Adapter
         dropdown.setOnItemSelectedListener(this);
     }
 
-
+//drop down hashtags
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
@@ -34,4 +34,8 @@ public class EditRestaurantActivity extends AppCompatActivity implements Adapter
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
     }
+
+ //submit button
+
+
 }

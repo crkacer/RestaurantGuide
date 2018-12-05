@@ -24,7 +24,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".EditRestaurantActivity" />
-        <activity android:name=".AboutUsActivity"></activity>
+        <activity android:name=".AboutUsActivity" />
+
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@drawable/layout_borders" />
+
+        <activity android:name=".RegisterRestaurantActivity"></activity>
     </application>
 
 </manifest>
