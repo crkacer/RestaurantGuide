@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditRestaurantActivity">
+
+    <TextView
+        android:id="@+id/pageHeader"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center"
+        android:text="@string/TitlePage_EditRestaurant"
+        android:textColor="@android:color/white"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/Rest_Name"
+        android:textSize="19sp"
+        android:layout_width="79dp"
+        android:layout_height="32dp"
+        android:text="@string/edit_RestaurantName"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="76dp" />
+
+
+    <EditText
+        android:id="@+id/fieldRest_Name"
+        android:layout_width="204dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="28dp"
+        android:ems="10"
+        android:hint="@string/hint_Rest_Name"
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Rest_Address"
+        android:layout_width="83dp"
+        android:layout_height="32dp"
+        android:text="@string/edit_RestaurantAddress"
+        android:textSize="19sp"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="129dp" />
+
+    <TextView
+        android:id="@+id/Rest_Address2"
+        android:textSize="19sp"
+        android:layout_width="148dp"
+        android:layout_height="30dp"
+        android:text="@string/edit_RestaurantAddress2"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="184dp" />
+
+    <TextView
+        android:id="@+id/Rest_City"
+        android:textSize="19sp"
+        android:layout_width="50dp"
+        android:layout_height="32dp"
+        android:text="@string/edit_RestaurantCity"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="230dp" />
+
+    <TextView
+        android:id="@+id/Rest_State"
+        android:textSize="19sp"
+        android:layout_width="50dp"
+        android:layout_height="32dp"
+        android:text="@string/edit_RestaurantState"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="283dp" />
+
+    <TextView
+        android:id="@+id/Rest_Zip"
+        android:textSize="19sp"
+        android:layout_width="50dp"
+        android:layout_height="32dp"
+        android:text="@string/edit_RestaurantZip"
+        tools:layout_editor_absoluteX="212dp"
+        tools:layout_editor_absoluteY="230dp" />
+
+    <TextView
+        android:id="@+id/Rest_Country"
+        android:layout_width="77dp"
+        android:layout_height="32dp"
+        android:text="@string/edit_RestaurantCountry"
+        android:textSize="19sp"
+        tools:layout_editor_absoluteX="212dp"
+        tools:layout_editor_absoluteY="283dp" />
+
+    <TextView
+        android:id="@+id/Rest_Description"
+        android:layout_width="116dp"
+        android:layout_height="32dp"
+        android:text="@string/edit_RestaurantDescription"
+        android:textSize="19sp"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="344dp" />
+
+
+    <TextView
+        android:id="@+id/Rest_Tags"
+        android:textSize="19sp"
+        android:layout_width="92dp"
+        android:layout_height="32dp"
+        android:text="@string/edit_RestaurantTags"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="409dp" />
+
+    <Spinner
+        android:id="@+id/Rest_Tags_spinner"
+        android:layout_width="143dp"
+        android:layout_height="43dp"
+        tools:layout_editor_absoluteX="168dp"
+        tools:layout_editor_absoluteY="409dp" />
+
+
+
+
+</android.support.constraint.ConstraintLayout>
