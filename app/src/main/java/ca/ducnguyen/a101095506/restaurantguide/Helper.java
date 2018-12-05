@@ -1,3 +1,4 @@
+/*
 package ca.ducnguyen.a101095506.restaurantguide;
 
 import android.support.v7.app.AppCompatActivity;
@@ -58,4 +59,4 @@ public class Helper extends SQLiteOpenHelper {
         Cursor results = db.rawQuery("SELECT * FROM " + TABLE_NAME,null);
         return results;
     }
-}
+}*/
