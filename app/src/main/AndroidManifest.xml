@@ -15,13 +15,15 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashsActivity"
-            android:label="SplashsActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="SplashsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".DetailActivity">
+
         </activity>
         <activity android:name=".EditRestaurantActivity" />
         <activity android:name=".AboutUsActivity" />
