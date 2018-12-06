@@ -38,9 +38,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public SQLiteDatabase getWritableDatabase(){
-        return this.getWritableDatabase();
-    }
 //    public boolean insertData(String name, String affiliation, String email, String bio){
 //        SQLiteDatabase db = this.getWritableDatabase();
 //        ContentValues contentValues = new ContentValues();

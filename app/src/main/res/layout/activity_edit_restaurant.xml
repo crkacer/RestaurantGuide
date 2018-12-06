@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@drawable/side_nav_bar"
     tools:context=".EditRestaurantActivity">
 
     <LinearLayout
@@ -12,14 +12,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/pageHeader"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:gravity="center"
-        android:text="@string/TitlePage_EditRestaurant"
-        android:textColor="@android:color/white"
-        android:textSize="34sp" />
+        <TextView
+            android:id="@+id/pageHeader"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center"
+            android:text="@string/TitlePage_EditRestaurant"
+            android:textColor="@android:color/white"
+            android:textSize="34sp" />
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/attendee1"
@@ -60,7 +60,7 @@
                 android:layout_width="83dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="64dp"
                 android:layout_marginEnd="44dp"
                 android:text="@string/edit_RestaurantStreet"
                 android:textSize="19sp"
@@ -74,14 +74,14 @@
                 android:id="@+id/fieldRest_Street"
                 android:layout_width="194dp"
                 android:layout_height="39dp"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="28dp"
                 android:ems="10"
                 android:hint="@string/hint_Rest_Street"
                 android:inputType="text"
                 android:text=""
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fieldRest_Name" />
+                app:layout_constraintTop_toBottomOf="@+id/fieldEdit_phone" />
 
             <TextView
                 android:id="@+id/Rest_Apt"
@@ -228,50 +228,21 @@
                 android:layout_height="32dp"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="48dp"
-                android:layout_marginEnd="8dp"
                 android:text="@string/edit_RestaurantDescription"
                 android:textSize="19sp"
-                app:layout_constraintEnd_toStartOf="@+id/fieldRest_Description"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Rest_Country" />
-
-            <EditText
-                android:id="@+id/fieldRest_Description"
-                android:layout_width="197dp"
-                android:layout_height="44dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="28dp"
-                android:ems="10"
-                android:hint="@string/hint_Rest_Description"
-                android:inputType="textMultiLine"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fieldRest_Country" />
 
             <TextView
                 android:id="@+id/Rest_Tags"
                 android:layout_width="92dp"
                 android:layout_height="32dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="36dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="48dp"
                 android:text="@string/edit_RestaurantTags"
                 android:textSize="19sp"
-                app:layout_constraintEnd_toStartOf="@+id/Rest_Tags_spinner"
-                app:layout_constraintHorizontal_bias="0.518"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Rest_Description" />
-
-            <Spinner
-                android:id="@+id/Rest_Tags_spinner"
-                android:layout_width="198dp"
-                android:layout_height="34dp"
-                android:layout_marginEnd="24dp"
-                android:spinnerMode="dropdown"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fieldRest_Description"
-                app:layout_constraintVertical_bias="0.219" />
 
 
             <Button
@@ -279,16 +250,68 @@
                 android:layout_width="208dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="40dp"
                 android:layout_marginEnd="84dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="4744dp"
                 android:text="@string/btn_edit"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.976"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/fieldRes_Tags"
+                android:layout_width="197dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginBottom="8dp"
+                android:ems="10"
+                android:hint="Tags (separated by comma)"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/btn_Edit"
+                app:layout_constraintStart_toEndOf="@+id/Rest_Tags" />
+
+            <EditText
+                android:id="@+id/fieldEdit_Description"
+                android:layout_width="201dp"
+                android:layout_height="104dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                app:layout_constraintBottom_toTopOf="@+id/fieldRes_Tags"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/Rest_Description"
+                app:layout_constraintTop_toBottomOf="@+id/fieldRest_Country" />
+
+            <EditText
+                android:id="@+id/fieldEdit_phone"
+                android:layout_width="194dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:hint="Enter phone"
+                android:inputType="phone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.701"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/fieldRest_Name" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="71dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Phone:"
+                android:textSize="19sp"
+                app:layout_constraintBottom_toTopOf="@+id/Rest_Street"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Rest_Tags_spinner"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/Rest_Name" />
 
         </android.support.constraint.ConstraintLayout>
 

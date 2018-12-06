@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="16dp"
+    android:background="@drawable/side_nav_bar"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp"
     android:paddingTop="16dp"
-    android:background="@color/colorPrimaryDark"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
     tools:context=".SplashsActivity">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/splashlogo"/>
+        android:src="@drawable/splashlogo" />
 
 </RelativeLayout>

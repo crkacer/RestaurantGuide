@@ -16,12 +16,7 @@ public class EditRestaurantActivity extends AppCompatActivity implements Adapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_restaurant);
 
-        //get the spinner from the xml.
-        Spinner dropdown = findViewById(R.id.Rest_Tags_spinner);
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        dropdown.setAdapter(adapter);
-        dropdown.setOnItemSelectedListener(this);
+
     }
 
 //drop down hashtags

@@ -50,6 +50,7 @@ public class RestaurantDAO implements DAO<RestaurantDTO> {
     public boolean save(RestaurantDTO restaurantDTO) {
         ContentValues content = restaurantDTO.getContentValueCreate();
         long result = db.getWritableDatabase().insert(TABLE_NAME, null, content);
+
         return result == -1;
     }
 
