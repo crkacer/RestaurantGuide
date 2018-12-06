@@ -1,10 +1,15 @@
 package ca.ducnguyen.a101095506.restaurantguide;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,10 +24,25 @@ public class RegisterRestaurantActivity extends AppCompatActivity {
     EditText name, street, apartment, city, state, zip, country, desc, tags, phone;
     DatabaseHelper myDb;
     RestaurantDAO restaurantDAO;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            finish();
+            startActivity(intent);
+
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_restaurant);
+
         btnRegister = findViewById(R.id.btn_Register);
 
         name = findViewById(R.id.fieldRest_Name);
@@ -36,6 +56,7 @@ public class RegisterRestaurantActivity extends AppCompatActivity {
         desc = findViewById(R.id.fieldRest_Description);
         tags = findViewById(R.id.fieldRes_Tags);
         myDb = new DatabaseHelper(this);
+
         restaurantDAO = new RestaurantDAO(myDb);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +71,8 @@ public class RegisterRestaurantActivity extends AppCompatActivity {
                 restaurantDTO.setTags(new ArrayList<String>(Arrays.asList(tagsArr)));
                 restaurantDAO.save(restaurantDTO);
                 myDb.close();
-                finish();
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
             }
         });
     }

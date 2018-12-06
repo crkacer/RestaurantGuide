@@ -38,24 +38,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-//    public boolean insertData(String name, String affiliation, String email, String bio){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues contentValues = new ContentValues();
-//        contentValues.put(COL_2, name);
-//        contentValues.put(COL_3, affiliation);
-//        contentValues.put(COL_4, email);
-//        contentValues.put(COL_5, bio);
-//        long result = db.insert(TABLE_NAME, null, contentValues);
-//        if (result == -1)
-//            return false;
-//        else
-//            return true;
-//    }
-//
-//    public Cursor getAllData(){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        Cursor results = db.rawQuery("SELECT * FROM " + TABLE_NAME,null);
-//        return results;
-//    }
+
 }
 
