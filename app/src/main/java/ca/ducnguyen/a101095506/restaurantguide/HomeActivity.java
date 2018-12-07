@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -29,15 +30,18 @@ import java.util.Map;
 import ca.ducnguyen.a101095506.restaurantguide.helpers.DatabaseHelper;
 import ca.ducnguyen.a101095506.restaurantguide.helpers.RightDrawableOnTouchListener;
 import ca.ducnguyen.a101095506.restaurantguide.models.RestaurantDAO;
+import ca.ducnguyen.a101095506.restaurantguide.models.RestaurantDTO;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     RestaurantDAO restaurantDAO;
     ListView listView;
+    List<String> idList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //Database here
@@ -45,7 +49,6 @@ public class HomeActivity extends AppCompatActivity
 
         listView = (ListView) findViewById(R.id.restaurant_list);
 
-        getSupportActionBar().setTitle("Home");
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,13 +80,14 @@ public class HomeActivity extends AppCompatActivity
 
         Cursor cursor = restaurantDAO.getAll();
         HashMap<String, String> restaurantData = new HashMap<>();
-
+        idList = new ArrayList<>();
         if(cursor.getCount() == 0){
             Toast.makeText(this, "No content", Toast.LENGTH_LONG).show();
         }else{
             while(cursor.moveToNext()){
-                String name = cursor.getString(cursor.getColumnIndex("NAME"));
-                String address = cursor.getString(cursor.getColumnIndex("ADDRESS"));
+                idList.add(cursor.getString(cursor.getColumnIndex(RestaurantDTO.COL_1)));
+                String name = cursor.getString(cursor.getColumnIndex(RestaurantDTO.COL_2));
+                String address = cursor.getString(cursor.getColumnIndex(RestaurantDTO.COL_3));
                 restaurantData.put(name, address);
             }
             List<HashMap<String, String>> listItem = new ArrayList<>();
@@ -98,6 +102,16 @@ public class HomeActivity extends AppCompatActivity
             }
 
             listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String[] arr = idList.toArray(new String[idList.size()]);
+                    Intent intent = new Intent(getApplicationContext(),DetailActivity.class);
+                    intent.putExtra(RestaurantDTO.COL_1, arr[position]);
+                    startActivity(intent);
+                }
+            });
+            cursor.close();
         }
 
 

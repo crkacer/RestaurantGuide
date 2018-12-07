@@ -19,6 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_4 = "DESCRIPTION";
     public static final String COL_5 = "PHONE";
     public static final String COL_6 = "TAGS";
+    public static final String COL_7 = "RATE";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME , null, 1);
@@ -26,7 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME + " (ID TEXT PRIMARY KEY, NAME TEXT, ADDRESS TEXT, DESCRIPTION TEXT, PHONE VARCHAR, TAGS VARCHAR)"
+        db.execSQL("create table " + TABLE_NAME + " (ID TEXT PRIMARY KEY, NAME TEXT, ADDRESS TEXT, DESCRIPTION TEXT, PHONE VARCHAR, TAGS VARCHAR, RATE VARCHAR)"
         );
 
     }

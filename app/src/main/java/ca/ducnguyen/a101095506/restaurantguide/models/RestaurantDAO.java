@@ -34,7 +34,9 @@ public class RestaurantDAO implements DAO<RestaurantDTO> {
             restaurantDTO.setDescription(cursor.getString(cursor.getColumnIndex(RestaurantDTO.COL_4)));
             restaurantDTO.setPhone(cursor.getString(cursor.getColumnIndex(RestaurantDTO.COL_5)));
             String[] tags = cursor.getString(cursor.getColumnIndex(RestaurantDTO.COL_6)).split(",");
+
             restaurantDTO.setTags(new ArrayList<String>(Arrays.asList(tags)));
+            restaurantDTO.setRating(cursor.getString(cursor.getColumnIndex(RestaurantDTO.COL_7)));
 
         }
         cursor.close();
@@ -50,7 +52,7 @@ public class RestaurantDAO implements DAO<RestaurantDTO> {
     public boolean save(RestaurantDTO restaurantDTO) {
         ContentValues content = restaurantDTO.getContentValueCreate();
         long result = db.getWritableDatabase().insert(TABLE_NAME, null, content);
-
+        db.close();
         return result == -1;
     }
 
@@ -58,11 +60,13 @@ public class RestaurantDAO implements DAO<RestaurantDTO> {
     public void update(RestaurantDTO restaurantDTO) {
         ContentValues content = restaurantDTO.getContentValueUpdate();
         db.getWritableDatabase().update(TABLE_NAME, content, "ID=?",new String[]{restaurantDTO.getID()});
+        db.close();
 
     }
 
     @Override
     public void delete(RestaurantDTO restaurantDTO) {
         db.getWritableDatabase().delete(TABLE_NAME, "ID=?", new String[]{restaurantDTO.getID()});
+        db.close();
     }
 }
