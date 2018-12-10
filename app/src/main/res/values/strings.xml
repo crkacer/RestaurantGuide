@@ -13,15 +13,25 @@
     <string name="TitlePage_RegisterRestaurant">Register Restaurant</string>
     <string name="TitlePage_EditRestaurant">Edit Restaurant</string>
     <string name="edit_RestaurantName">Name:</string>
+    <string name="register_RestaurantName">Name:</string>
     <string name="edit_RestaurantStreet">Street:</string>
+    <string name="register_RestaurantStreet">Street:</string>
     <string name="edit_RestaurantApartment">Apartment/Suite/Unit:</string>
+    <string name="register_RestaurantApartment">Apartment/Suite/Unit:</string>
     <string name="edit_RestaurantCity">City:</string>
+    <string name="register_RestaurantCity">City:</string>
     <string name="edit_RestaurantState">State:</string>
+    <string name="register_RestaurantState">State:</string>
     <string name="edit_RestaurantZip">Zip:</string>
+    <string name="register_RestaurantZip">Zip:</string>
     <string name="edit_RestaurantCountry">Country:</string>
+    <string name="register_RestaurantCountry">Country:</string>
     <string name="edit_RestaurantDescription">Description:</string>
-    <string name="edit_RestaurantTags">Tags:</string>
+    <string name="register_RestaurantDescription">Description:</string>
+    <string name="edit_ResTags">Tags:</string>
+    <string name="register_RestaurantTags">Tags:</string>
     <string name="edit_input_RestaurantName">Tags:</string>
+    <string name="register_input_RestaurantName">Tags:</string>
     <string name="hint_Rest_Name">Enter Name</string>
     <string name="hint_Rest_Street">Enter Street</string>
     <string name="hint_Rest_Apartment">Enter Apartment</string>
@@ -32,6 +42,9 @@
     <string name="hint_Rest_Description">Enter Description</string>
     <string name="btn_edit">Edit</string>
     <string name="btn_register">Register</string>
+
+
+
 
     <string name="RestaurantGuide">Rest_Tags_spinner</string>
     <string-array name="Items">
