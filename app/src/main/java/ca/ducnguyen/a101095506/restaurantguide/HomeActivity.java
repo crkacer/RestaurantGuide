@@ -24,6 +24,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -37,6 +38,8 @@ public class HomeActivity extends AppCompatActivity
     RestaurantDAO restaurantDAO;
     ListView listView;
     List<String> idList;
+    SimpleAdapter adapter;
+    Map<String, String> restaurantData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +57,6 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), RegisterRestaurantActivity.class);
-                finish();
                 startActivity(intent);
             }
         });
@@ -78,8 +80,19 @@ public class HomeActivity extends AppCompatActivity
         });
 
 
+        populateDataSet();
+
+
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        populateDataSet();
+    }
+
+    private void populateDataSet(){
         Cursor cursor = restaurantDAO.getAll();
-        HashMap<String, String> restaurantData = new HashMap<>();
+        restaurantData = new LinkedHashMap<>();
         idList = new ArrayList<>();
         if(cursor.getCount() == 0){
             Toast.makeText(this, "No content", Toast.LENGTH_LONG).show();
@@ -91,7 +104,7 @@ public class HomeActivity extends AppCompatActivity
                 restaurantData.put(name, address);
             }
             List<HashMap<String, String>> listItem = new ArrayList<>();
-            SimpleAdapter adapter = new SimpleAdapter(this, listItem, R.layout.list_item, new String[]{"First Line", "Second Line"}, new int[]{R.id.nameTitle, R.id.nameSubtitle});
+            adapter = new SimpleAdapter(this, listItem, R.layout.list_item, new String[]{"First Line", "Second Line"}, new int[]{R.id.nameTitle, R.id.nameSubtitle});
             Iterator it = restaurantData.entrySet().iterator();
             while(it.hasNext()){
                 HashMap<String, String> resultsMap = new HashMap<>();
@@ -113,10 +126,7 @@ public class HomeActivity extends AppCompatActivity
             });
             cursor.close();
         }
-
-
     }
-
     private boolean onClickSearch(final View view, MotionEvent event) {
         // do something
         event.setAction(MotionEvent.ACTION_CANCEL);

@@ -25,18 +25,6 @@ public class RegisterRestaurantActivity extends AppCompatActivity {
     DatabaseHelper myDb;
     RestaurantDAO restaurantDAO;
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-            finish();
-            startActivity(intent);
-
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +51,7 @@ public class RegisterRestaurantActivity extends AppCompatActivity {
             public void onClick(View v) {
                 RestaurantDTO restaurantDTO = new RestaurantDTO();
                 restaurantDTO.setName(name.getText().toString());
-                String address = street.getText().toString() + ", " + city.getText().toString() + ", " + state.getText().toString() + " " + country.getText().toString() + ", " + zip.getText().toString();
+                String address = street.getText().toString() + ", " + apartment.getText().toString() + ", " + city.getText().toString() + ", " + state.getText().toString() + " " + country.getText().toString() + ", " + zip.getText().toString();
                 restaurantDTO.setAddress(address);
                 restaurantDTO.setPhone(phone.getText().toString());
                 restaurantDTO.setDescription(desc.getText().toString());
@@ -71,8 +59,7 @@ public class RegisterRestaurantActivity extends AppCompatActivity {
                 restaurantDTO.setTags(new ArrayList<String>(Arrays.asList(tagsArr)));
                 restaurantDAO.save(restaurantDTO);
                 myDb.close();
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
     }

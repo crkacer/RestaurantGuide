@@ -48,8 +48,6 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_detail);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Detail");
         String id;
         if(savedInstanceState == null){
@@ -78,7 +76,7 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         address.setText("Address: " + "\n" + restaurantDTO.getAddress());
         phone.setText("Phone: " + "\n" + restaurantDTO.getPhone());
         description.setText("Description: " + "\n" + restaurantDTO.getDescription());
-        tags.setText("Tags: " + "\n" + restaurantDTO.getTags().toString());
+        tags.setText("Tags: " + "\n" + String.join(", ",restaurantDTO.getTags()));
 
 
         if(restaurantDTO.getRating() != null){
@@ -108,12 +106,13 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
                 switch(title){
                     case "Edit":
                         Intent intent = new Intent(getApplicationContext(), EditRestaurantActivity.class);
-                        intent.putExtra("ID", restaurantDTO.getID());
-                        startActivity(intent);
+                        intent.putExtra("restaurant", restaurantDTO);
                         finish();
+                        startActivity(intent);
                         break;
                     case "Delete":
-                        Toast.makeText(getApplicationContext(), "Implement Delete", Toast.LENGTH_SHORT).show();
+                        restaurantDAO.delete(restaurantDTO);
+                        finish();
                         break;
                     case "Share":
                         Toast.makeText(getApplicationContext(), "Implement Share", Toast.LENGTH_SHORT).show();
