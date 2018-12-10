@@ -15,7 +15,7 @@ public class RestaurantDTO {
     public static final String COL_4 = "DESCRIPTION";
     public static final String COL_5 = "PHONE";
     public static final String COL_6 = "TAGS";
-
+    public static final String COL_7 = "RATE";
 
     public String getID(){
         return this.id;
@@ -68,6 +68,7 @@ public class RestaurantDTO {
     private String phone;
     private String description;
     private List<String> tags;
+    private String rating = "0 star(s)";
 
     public ContentValues getContentValueCreate(){
         ContentValues content = new ContentValues();
@@ -89,6 +90,15 @@ public class RestaurantDTO {
         content.put(COL_5, this.phone);
         String strTag = android.text.TextUtils.join(",", this.tags);
         content.put(COL_6, strTag);
+        content.put(COL_7, this.rating);
         return content;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 }
