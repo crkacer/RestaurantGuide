@@ -2,11 +2,12 @@ package ca.ducnguyen.a101095506.restaurantguide.models;
 
 import android.content.ContentValues;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class RestaurantDTO {
+public class RestaurantDTO implements Serializable {
 
 
     public static final String COL_1 = "ID";
