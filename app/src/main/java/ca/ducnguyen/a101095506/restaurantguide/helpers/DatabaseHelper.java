@@ -19,6 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_4 = "DESCRIPTION";
     public static final String COL_5 = "PHONE";
     public static final String COL_6 = "TAGS";
+    public static final String COL_7 = "RATE";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME , null, 1);
@@ -26,7 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME + " (ID TEXT PRIMARY KEY, NAME TEXT, ADDRESS TEXT, DESCRIPTION TEXT, PHONE VARCHAR, TAGS VARCHAR)"
+        db.execSQL("create table " + TABLE_NAME + " (ID TEXT PRIMARY KEY, NAME TEXT, ADDRESS TEXT, DESCRIPTION TEXT, PHONE VARCHAR, TAGS VARCHAR, RATE VARCHAR)"
         );
 
     }
@@ -38,27 +39,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public SQLiteDatabase getWritableDatabase(){
-        return this.getWritableDatabase();
-    }
-//    public boolean insertData(String name, String affiliation, String email, String bio){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues contentValues = new ContentValues();
-//        contentValues.put(COL_2, name);
-//        contentValues.put(COL_3, affiliation);
-//        contentValues.put(COL_4, email);
-//        contentValues.put(COL_5, bio);
-//        long result = db.insert(TABLE_NAME, null, contentValues);
-//        if (result == -1)
-//            return false;
-//        else
-//            return true;
-//    }
-//
-//    public Cursor getAllData(){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        Cursor results = db.rawQuery("SELECT * FROM " + TABLE_NAME,null);
-//        return results;
-//    }
+
 }
 
