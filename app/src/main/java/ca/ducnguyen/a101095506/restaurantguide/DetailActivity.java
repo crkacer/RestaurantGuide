@@ -96,7 +96,9 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         phone = findViewById(R.id.txtPhone);
         description = findViewById(R.id.txtDescription);
         tags = findViewById(R.id.txtTags);
+
         shareDialog = new ShareDialog(this);
+
         ratingBar = (RatingBar) findViewById(R.id.ratingBar2);
         btnSubmit = (Button) findViewById(R.id.btnRating);
 
@@ -150,33 +152,16 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
     }
 
     public void onShareFB() {
+        String shareBody = restaurantDTO.getDescription() + "\n" + restaurantDTO.getAddress() + "\n" + restaurantDTO.getTags().toString();
+        String shareSub = restaurantDTO.getName();
         ShareLinkContent linkContent = new ShareLinkContent.Builder()
-                .setQuote("This is a useful link")
-                .setContentUrl(Uri.parse("https://youtube.com"))
+                .setQuote(shareBody)
+                .setContentTitle(shareSub)
                 .build();
         if (shareDialog.canShow(ShareLinkContent.class)) {
             shareDialog.show(linkContent);
         }
     }
-
-    private void onShareClick() {
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        String shareBody = "Your body is here";
-        String shareSub = "Your subject is here";
-        shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
-        shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-        startActivity(Intent.createChooser(shareIntent, "Share using"));
-    }
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//
-//        if (resultCode == RESULT_OK) {
-//            if (requestCode == R)
-//        }
-//        super.onActivityResult(requestCode, resultCode, data);
-//    }
 
 
     protected void populateDataSet(){
