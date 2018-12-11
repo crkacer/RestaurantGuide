@@ -114,8 +114,12 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
                         restaurantDAO.delete(restaurantDTO);
                         finish();
                         break;
-                    case "Share":
-                        Toast.makeText(getApplicationContext(), "Implement Share", Toast.LENGTH_SHORT).show();
+                    case "Share via Email":
+                        onShareClick();
+                        break;
+                    case "Share via Facebook":
+                        break;
+                    case "Share via Twitter":
                         break;
                 }
                 return true;
@@ -128,6 +132,16 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         });
         addListenerOnRatingButton();
 
+    }
+
+    private void onShareClick() {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        String shareBody = "Your body is here";
+        String shareSub = "Your subject is here";
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(shareIntent, "Share using"));
     }
 
     public void addListenerOnRatingButton(){
