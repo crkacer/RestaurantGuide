@@ -156,7 +156,7 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         String shareSub = restaurantDTO.getName();
         ShareLinkContent linkContent = new ShareLinkContent.Builder()
                 .setQuote(shareBody)
-                .setContentTitle(shareSub)
+                .setContentUrl(Uri.parse("https://www.yelp.ca/"))
                 .build();
         if (shareDialog.canShow(ShareLinkContent.class)) {
             shareDialog.show(linkContent);
