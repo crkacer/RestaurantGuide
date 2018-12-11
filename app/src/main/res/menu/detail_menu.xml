@@ -13,9 +13,23 @@
 
     </item>
     <item
-        android:id="@+id/share"
+        android:id="@+id/shareEmail"
         android:icon="@drawable/ic_menu_share"
-        android:title="Share">
+        android:title="Share via Email">
+
+    </item>
+    <item
+        android:id="@+id/shareFacebook"
+        android:icon="@drawable/ic_menu_slideshow"
+        android:title="Share via Facebook"
+        >
+
+    </item>
+    <item
+        android:id="@+id/shareTwitter"
+        android:icon="@drawable/ic_menu_gallery"
+        android:title="Share via Twitter"
+        >
 
     </item>
 </menu>

@@ -51,9 +51,9 @@ public class EditRestaurantActivity extends AppCompatActivity{
         state = findViewById(R.id.fieldRest_State);
         zip = findViewById(R.id.fieldRest_Zip);
         country = findViewById(R.id.fieldRest_Country);
-        desc = findViewById(R.id.fieldEdit_Description);
+        desc = findViewById(R.id.fieldRest_Description);
         tags = findViewById(R.id.fieldRes_Tags);
-        phone = findViewById(R.id.fieldEdit_phone);
+        phone = findViewById(R.id.fieldRest_phone);
 
         populateInputs();
 

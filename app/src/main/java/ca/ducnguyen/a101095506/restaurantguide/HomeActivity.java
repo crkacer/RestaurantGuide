@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -40,6 +42,7 @@ public class HomeActivity extends AppCompatActivity
     List<String> idList;
     SimpleAdapter adapter;
     Map<String, String> restaurantData;
+    EditText editText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,18 +74,27 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        final EditText editText = (EditText) findViewById(R.id.search);
-        editText.setOnTouchListener(new RightDrawableOnTouchListener(editText) {
-            @Override
-            public boolean onDrawableTouch(final MotionEvent event) {
-                return onClickSearch(editText,event);
-            }
-        });
+        editText = findViewById(R.id.search);
 
 
         populateDataSet();
 
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                adapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
     @Override
     protected void onResume() {
@@ -94,17 +106,18 @@ public class HomeActivity extends AppCompatActivity
         Cursor cursor = restaurantDAO.getAll();
         restaurantData = new LinkedHashMap<>();
         idList = new ArrayList<>();
+        List<HashMap<String, String>> listItem = new ArrayList<>();
+        adapter = new SimpleAdapter(this, listItem, R.layout.list_item, new String[]{"First Line", "Second Line"}, new int[]{R.id.nameTitle, R.id.nameSubtitle});
         if(cursor.getCount() == 0){
             Toast.makeText(this, "No content", Toast.LENGTH_LONG).show();
+            listView.setAdapter(adapter);
         }else{
             while(cursor.moveToNext()){
                 idList.add(cursor.getString(cursor.getColumnIndex(RestaurantDTO.COL_1)));
                 String name = cursor.getString(cursor.getColumnIndex(RestaurantDTO.COL_2));
-                String address = cursor.getString(cursor.getColumnIndex(RestaurantDTO.COL_3));
-                restaurantData.put(name, address);
+                String tags = cursor.getString(cursor.getColumnIndex(RestaurantDTO.COL_6));
+                restaurantData.put(name, tags);
             }
-            List<HashMap<String, String>> listItem = new ArrayList<>();
-            adapter = new SimpleAdapter(this, listItem, R.layout.list_item, new String[]{"First Line", "Second Line"}, new int[]{R.id.nameTitle, R.id.nameSubtitle});
             Iterator it = restaurantData.entrySet().iterator();
             while(it.hasNext()){
                 HashMap<String, String> resultsMap = new HashMap<>();
