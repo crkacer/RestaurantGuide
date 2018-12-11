@@ -2,10 +2,12 @@ package ca.ducnguyen.a101095506.restaurantguide;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.content.pm.PackageManager;
 import android.media.Rating;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.internal.NavigationMenu;
 import android.support.design.widget.FloatingActionButton;
@@ -94,7 +96,7 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         phone = findViewById(R.id.txtPhone);
         description = findViewById(R.id.txtDescription);
         tags = findViewById(R.id.txtTags);
-
+        shareDialog = new ShareDialog(this);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar2);
         btnSubmit = (Button) findViewById(R.id.btnRating);
 
@@ -195,6 +197,7 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
 
         }
         Bundle mapViewBundle = null;
+
         mapView = (MapView) findViewById(R.id.mapView);
         mapView.onCreate(mapViewBundle);
         mapView.getMapAsync(this);
