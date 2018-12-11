@@ -2,16 +2,15 @@ package ca.ducnguyen.a101095506.restaurantguide;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
-import android.location.LocationListener;
+import android.content.pm.PackageManager;
 import android.media.Rating;
-import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.internal.NavigationMenu;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
@@ -88,19 +87,7 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
 
         setContentView(R.layout.activity_detail);
         getSupportActionBar().setTitle("Detail");
-        String id;
-        if(savedInstanceState == null){
-            Bundle extras = getIntent().getExtras();
-            if(extras == null){
-                id = null;
-            }else{
-                id = extras.getString(RestaurantDTO.COL_1);
-            }
-        }else{
-            id = (String) savedInstanceState.getSerializable(RestaurantDTO.COL_1);
-        }
-        restaurantDAO = new RestaurantDAO(new DatabaseHelper(this));
-        restaurantDTO = restaurantDAO.get(id);
+
 
         name = findViewById(R.id.txtName);
         address = findViewById(R.id.txtAddress);
@@ -111,27 +98,8 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         ratingBar = (RatingBar) findViewById(R.id.ratingBar2);
         btnSubmit = (Button) findViewById(R.id.btnRating);
 
-        name.setText("Name: " + "\n" + restaurantDTO.getName());
-        address.setText("Address: " + "\n" + restaurantDTO.getAddress());
-        phone.setText("Phone: " + "\n" + restaurantDTO.getPhone());
-        description.setText("Description: " + "\n" + restaurantDTO.getDescription());
-        tags.setText("Tags: " + "\n" + String.join(", ",restaurantDTO.getTags()));
+        populateDataSet();
 
-
-        if(restaurantDTO.getRating() != null){
-            float numStar = Float.parseFloat(restaurantDTO.getRating().split(" ")[0]);
-
-            ratingBar.setRating(numStar);
-
-        }
-        Bundle mapViewBundle = null;
-        if(savedInstanceState != null){
-            mapViewBundle = savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY);
-        }
-        mapView = (MapView) findViewById(R.id.mapView);
-        mapView.onCreate(mapViewBundle);
-        mapView.getMapAsync(this);
-        shareDialog = new ShareDialog(this);
 
         fabSpeedDial = (FabSpeedDial) findViewById(R.id.btnDetail);
         fabSpeedDial.setMenuListener(new FabSpeedDial.MenuListener() {
@@ -147,7 +115,6 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
                     case "Edit":
                         Intent intent = new Intent(getApplicationContext(), EditRestaurantActivity.class);
                         intent.putExtra("restaurant", restaurantDTO);
-                        finish();
                         startActivity(intent);
                         break;
                     case "Delete":
@@ -155,12 +122,13 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
                         finish();
                         break;
                     case "Share via Email":
-                        onShareClick();
+                        OnSharingClick("com.google.android.gm");
                         break;
                     case "Share via Facebook":
                         onShareFB();
                         break;
                     case "Share via Twitter":
+                        OnSharingClick("com.twitter.android");
                         break;
                 }
                 return true;
@@ -172,6 +140,10 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
             }
         });
         addListenerOnRatingButton();
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
     }
 
@@ -204,6 +176,70 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
 //        super.onActivityResult(requestCode, resultCode, data);
 //    }
 
+
+    protected void populateDataSet(){
+        String id = getIntent().getExtras().getString(RestaurantDTO.COL_1);
+        restaurantDAO = new RestaurantDAO(new DatabaseHelper(this));
+        restaurantDTO = restaurantDAO.get(id);
+        name.setText("Name: " + "\n" + restaurantDTO.getName());
+        address.setText("Address: " + "\n" + restaurantDTO.getAddress());
+        phone.setText("Phone: " + "\n" + restaurantDTO.getPhone());
+        description.setText("Description: " + "\n" + restaurantDTO.getDescription());
+        tags.setText("Tags: " + "\n" + String.join(", ",restaurantDTO.getTags()));
+
+
+        if(restaurantDTO.getRating() != null){
+            float numStar = Float.parseFloat(restaurantDTO.getRating().split(" ")[0]);
+
+            ratingBar.setRating(numStar);
+
+        }
+        Bundle mapViewBundle = null;
+        mapView = (MapView) findViewById(R.id.mapView);
+        mapView.onCreate(mapViewBundle);
+        mapView.getMapAsync(this);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            this.finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void OnSharingClick(String application) {
+
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        String shareBody = restaurantDTO.getDescription() + "\n" + restaurantDTO.getAddress() + "\n" + restaurantDTO.getTags().toString();
+        String shareSub = restaurantDTO.getName();
+        intent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
+        intent.putExtra(Intent.EXTRA_TEXT, shareBody);
+        boolean installed = checkAppInstall(application);
+        if (installed) {
+            intent.setPackage(application);
+            startActivity(intent);
+        } else {
+            Toast.makeText(getApplicationContext(),
+                    "Installed application first", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+
+    private boolean checkAppInstall(String uri) {
+        PackageManager pm = getPackageManager();
+        try {
+            pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+
+        return false;
+    }
     public void addListenerOnRatingButton(){
 
 
@@ -232,6 +268,7 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
     @Override
     protected void onResume() {
         super.onResume();
+        populateDataSet();
         mapView.onResume();
     }
 
