@@ -24,7 +24,8 @@
         android:layout_margin="@dimen/fab_margin"
         app:fabGravity="bottom_end"
         app:fabMenu="@menu/detail_menu"
-
-        app:miniFabBackgroundTint="@android:color/white"></io.github.yavski.fabspeeddial.FabSpeedDial>
+        app:miniFabBackgroundTint="@color/common_google_signin_btn_text_dark_default"
+        app:fabBackgroundTint="@android:color/holo_blue_dark"
+        ></io.github.yavski.fabspeeddial.FabSpeedDial>
 
 </android.support.design.widget.CoordinatorLayout>
