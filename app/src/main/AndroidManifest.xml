@@ -16,6 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"></meta-data>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -50,6 +54,11 @@
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false"/>
+
+        <provider
+            android:authorities="com.facebook.app.FacebookContentProvider209218869958061"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"></provider>
     </application>
 
 </manifest>

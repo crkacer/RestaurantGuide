@@ -82,4 +82,6 @@
 
     <string name="title_activity_detail">DetailActivity</string>
     <string name="btnRating">Rate</string>
+    <string name="facebook_app_id">209218869958061</string>
+    <string name="fb_login_protocol_scheme">fb209218869958061</string>
 </resources>

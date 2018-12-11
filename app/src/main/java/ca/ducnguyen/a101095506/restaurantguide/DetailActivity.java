@@ -1,21 +1,33 @@
 package ca.ducnguyen.a101095506.restaurantguide;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.location.LocationListener;
 import android.media.Rating;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.internal.NavigationMenu;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.net.Uri;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookSdk;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -23,6 +35,9 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import ca.ducnguyen.a101095506.restaurantguide.helpers.DatabaseHelper;
 import ca.ducnguyen.a101095506.restaurantguide.models.RestaurantDAO;
@@ -41,11 +56,35 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
     TextView name, address, phone, description, tags;
     FabSpeedDial fabSpeedDial;
 
+    CallbackManager callbackManager;
+    ShareDialog shareDialog;
+
     private static final String MAP_VIEW_BUNDLE_KEY = "AIzaSyCadGpBujulZEarEefgb7NWbDikpES9Lc4";
+
+    public void printKeyInfo(Context context) {
+
+        try {
+            final PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(), PackageManager.GET_SIGNATURES);
+            for (android.content.pm.Signature signature : info.signatures) {
+                final MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                final String hashKey = new String(Base64.encode(md.digest(), 0));
+                Log.i("AppLog", "key:" + hashKey + "=");
+            }
+        } catch (Exception e) {
+            Log.e("AppLog", "error:", e);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(this.getApplicationContext());
+
+        callbackManager = CallbackManager.Factory.create();
+
+        printKeyInfo(getApplicationContext());
+
 
         setContentView(R.layout.activity_detail);
         getSupportActionBar().setTitle("Detail");
@@ -92,6 +131,7 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         mapView = (MapView) findViewById(R.id.mapView);
         mapView.onCreate(mapViewBundle);
         mapView.getMapAsync(this);
+        shareDialog = new ShareDialog(this);
 
         fabSpeedDial = (FabSpeedDial) findViewById(R.id.btnDetail);
         fabSpeedDial.setMenuListener(new FabSpeedDial.MenuListener() {
@@ -118,6 +158,7 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
                         onShareClick();
                         break;
                     case "Share via Facebook":
+                        onShareFB();
                         break;
                     case "Share via Twitter":
                         break;
@@ -134,6 +175,16 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
 
     }
 
+    public void onShareFB() {
+        ShareLinkContent linkContent = new ShareLinkContent.Builder()
+                .setQuote("This is a useful link")
+                .setContentUrl(Uri.parse("https://youtube.com"))
+                .build();
+        if (shareDialog.canShow(ShareLinkContent.class)) {
+            shareDialog.show(linkContent);
+        }
+    }
+
     private void onShareClick() {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
@@ -143,6 +194,15 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
         shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(shareIntent, "Share using"));
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//
+//        if (resultCode == RESULT_OK) {
+//            if (requestCode == R)
+//        }
+//        super.onActivityResult(requestCode, resultCode, data);
+//    }
 
     public void addListenerOnRatingButton(){
 
